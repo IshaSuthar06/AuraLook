@@ -166,14 +166,14 @@ className="relative group text-gray-700 hover:text-[#1a9f82] transition">
     <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#1a9f82] transition-all duration-300 group-hover:w-full"></span>
   </Link>
 
-  {/* {isSeller && (
+  {isSeller && (
   <button
     onClick={() => router.push("/seller")}
     className="text-xs border px-4 py-1.5 rounded-full"
   >
     Seller Dashboard
   </button>
-)} */}
+)}
 
 </div>
 
