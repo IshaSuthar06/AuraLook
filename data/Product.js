@@ -1,0 +1,103 @@
+
+
+ const products = [
+  {
+    id: 1,
+    name: "Natural detox drop",
+    category: "Detox",
+    description: "Fast-acting pain relief and fever reducer. Pack of 20 tablets.",
+    price: 100,
+    image: "/natural-detox-all-inner-images/natural-detox-drop-inner-image.png",
+  },
+  {
+    id: 2,
+    name: "Natural detox juice (500ml)",
+    category: "Detox",
+    description: "Boosts immunity and helps fight infections. Pack of 30 tablets.",
+    price:283,
+    image: "/natural-detox-all-inner-images/natural-detox-juice-(500ml)-inner-image-1.png",
+  },
+  {
+    id: 3,
+    name: "Natural detox juice (1000ml)",
+    category: "Detox",
+    description: "Gentle face wash for glowing and fresh skin.",
+    price: 8323,
+    image: "natural-detox-all-inner-images/natural-detox-juice-(1000ml)-inner-image-1.png",
+  },
+  {
+    id: 4,
+    name: "Natural detox tablet",
+    category: "Detox",
+    description: "Nourishes scalp and strengthens hair roots.",
+    price:343,
+    image: "natural-detox-all-inner-images/natural-detox-tablet-inner-image.png",
+  },
+  {
+    id: 5,
+    name: "Men health drop",
+    category: "Energy and Performance",
+    description: "Keeps your skin soft and moisturized all day.",
+    price: 345,
+    image: "/men-health-all-inner-images/men-health-drop-inner-image.png",
+  },
+  {
+    id: 6,
+    name: "Men health juice (500ml)",
+    category: "Energy and Performance",
+    description: "Instant relief from muscle pain and sprains.",
+    price: 978,
+    image: "/men-health-all-inner-images/men-health-juice-(500ml)-inner-image-1.png",
+  },
+  {
+    id: 7,
+    name: "Men health juice (1000ml)",
+    category: "Energy and Performance",
+    description: "Natural gel for soothing and hydrating skin.",
+    price: 754,
+    image: "/men-health-all-inner-images/men-health-juice-(1000ml)-inner-image-1.png",
+  },
+  {
+    id: 8,
+    name: "Men health tablet",
+    category: "Energy and Performance",
+    description: "Supports muscle growth and recovery.",
+    price:663,
+    image: "/men-health-all-inner-images/men-health-tablet-inner-image.png",
+  },
+  {
+    id: 9,
+    name: "Pain relief drop",
+    category: "Health juices",
+    description: "Supports muscle growth and recovery.",
+    price:643,
+    image: "/pain-relief-all-inner-images/Pain-relief-drop-inner-image.png",
+  },
+  {
+    id: 10,
+    name: "Pain relief juice (500ml)",
+    category: "Health juices",
+    description: "Supports muscle growth and recovery.",
+    price:643,
+    image: "/pain-relief-all-inner-images/Pain-relief-juice-(500ml)-inner-image-1.png",
+  },
+  {
+    id: 11,
+    name: "Pain relief juice (1000ml)",
+    category: "Health juices",
+    description: "Supports muscle growth and recovery.",
+    price:663,
+    image: "/pain-relief-all-inner-images/Pain-relief-juice-(1000ml)-inner-image.png",
+  },
+  {
+    id: 12,
+    name: "Pain relief tablet",
+    category: "Health juices",
+    description: "Supports muscle growth and recovery.",
+    price:643,
+    image: "/pain-relief-all-inner-images/Pain-relief-tablet-inner-image.png",
+  },
+];
+
+export default products
+

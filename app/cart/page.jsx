@@ -1,0 +1,172 @@
+'use client'
+import React from "react";
+import { assets } from "../../assets/juvenis-assets";
+import OrderSummary from "../../components/OrderSummary";
+import Image from "next/image";
+import { useApp } from "../../context/AppContext";
+
+
+const Cart = () => {
+
+  const { products, router, cartItems, addToCart, updateCartQuantity, getCartCount } = useApp();
+
+const selectedSizeData = products.sizes?.find(
+  (s) => s.label === size
+);
+
+
+  return (
+    <>
+      <div className="flex flex-col md:flex-row gap-10 px-6 md:px-16 lg:px-32 pt-14 mb-20">
+        <div className="flex-1">
+          <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
+            <p className="text-2xl md:text-3xl text-gray-500">
+              Your <span className="font-medium text-[#1a9f82]">Cart</span>
+            </p>
+            <p className="text-lg md:text-xl text-gray-500/80">{getCartCount()} Items</p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="min-w-full table-auto">
+              <thead className="text-left">
+                <tr>
+                  <th className="text-nowrap pb-6 md:px-4 px-1 text-gray-600 font-medium">
+                    Product Details
+                  </th>
+                  <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
+                    Price
+                  </th>
+                  <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
+                    Quantity
+                  </th>
+                  <th className="pb-6 md:px-4 px-1 text-gray-600 font-medium">
+                    Subtotal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+  {Object.keys(cartItems).map((key) => {
+    const [productId, size] = key.split("-");
+
+    const product = products.find(
+      (p) => p._id === productId
+    );
+
+    if (!product || cartItems[key] <= 0) return null;
+
+    // ✅ price based on size
+const selectedSizeData = product.sizes?.find(
+  (s) => s.label === size
+);
+
+const price =
+  selectedSizeData?.offerPrice || product.offerPrice;
+
+    return (
+      <tr key={key}>
+        {/* PRODUCT */}
+        <td className="flex items-center gap-4 py-4 md:px-4 px-1">
+          <div>
+            <div className="rounded-lg overflow-hidden bg-gray-500/10 p-2">
+              <Image
+                src={
+                  Array.isArray(product.image) && product.image.length > 0
+                    ? product.image[0]
+                    : "/default-image.png"
+                }
+                alt={product.name}
+                className="w-16 h-auto object-cover"
+                width={1280}
+                height={720}
+              />
+            </div>
+
+            <button
+              className="md:hidden text-xs text-[#1a9f82] mt-1"
+              onClick={() => updateCartQuantity(key, 0)}
+            >
+              Remove
+            </button>
+          </div>
+
+          <div className="text-sm hidden md:block">
+            <p className="text-gray-800">{product.name}</p>
+
+            {/* ✅ SHOW SIZE */}
+            <p className="text-xs text-gray-500">Size: {size}</p>
+
+            <button
+              className="text-xs text-[#1a9f82] mt-1"
+              onClick={() => updateCartQuantity(key, 0)}
+            >
+              Remove
+            </button>
+          </div>
+        </td>
+
+        {/* PRICE */}
+        <td className="py-4 md:px-4 px-1 text-gray-600">
+          Rs {price}
+        </td>
+
+        {/* QUANTITY */}
+        <td className="py-4 md:px-4 px-1">
+          <div className="flex items-center md:gap-2 gap-1">
+            <button
+              onClick={() =>
+                updateCartQuantity(key, cartItems[key] - 1)
+              }
+            >
+              <Image
+                src={assets.decrease_arrow}
+                alt="decrease_arrow"
+                className="w-4 h-4"
+              />
+            </button>
+
+            <input
+              type="number"
+              value={cartItems[key]}
+              onChange={(e) =>
+                updateCartQuantity(key, Number(e.target.value))
+              }
+              className="w-8 border text-center"
+            />
+
+            <button
+              onClick={() => addToCart(productId, size)}
+            >
+              <Image
+                src={assets.increase_arrow}
+                alt="increase_arrow"
+                className="w-4 h-4"
+              />
+            </button>
+          </div>
+        </td>
+
+        {/* SUBTOTAL */}
+        <td className="py-4 md:px-4 px-1 text-gray-600">
+          Rs {(price * cartItems[key]).toFixed(2)}
+        </td>
+      </tr>
+    );
+  })}
+</tbody>
+            </table>
+          </div>
+          <button onClick={()=> router.push('/products')} className="group flex items-center mt-6 gap-2 text-[#1a9f82]">
+            <Image
+              className="group-hover:-translate-x-1 transition text-[#1a9f82]"
+              src={assets.arrow_right_icon_colored}
+              alt="arrow_right_icon_colored"
+            />
+            Continue Shopping
+          </button>
+        </div>
+        <OrderSummary />
+      </div>
+    </>
+  );
+};
+
+export default Cart;
